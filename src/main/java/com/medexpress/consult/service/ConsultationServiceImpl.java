@@ -49,7 +49,7 @@ public class ConsultationServiceImpl implements ConsultationService {
             sum += answer.getResponse();
         }
 
-        if (sum > 0 && sum <= 30) {
+        if (sum >= 0 && sum <= 30) {
             response = NOT_LIKELY_RESPONSE;
         } else if (sum > 30 && sum <= 60) {
             response = LIKELY_RESPONSE;

@@ -22,7 +22,7 @@ public class Consultation extends BaseEntity {
     @NotNull
     private String title;
 
-    @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Question> questions = new ArrayList<>();
 }
