@@ -16,6 +16,10 @@ public class ConsultationServiceImpl implements ConsultationService {
     private final ConsultationRepository consultationRepository;
     private final AnswerRepository answerRepository;
 
+    private final String LIKELY_RESPONSE = "likely";
+    private final String NOT_LIKELY_RESPONSE = "not likely";
+    private final String VERY_LIKELY_RESPONSE = "very likely";
+
     @Override
     public List<Consultation> getAll() {
         return consultationRepository.findAll();
@@ -35,7 +39,23 @@ public class ConsultationServiceImpl implements ConsultationService {
     }
 
     @Override
-    public void saveAnswers(List<Answer> answers) {
+    public String saveAnswers(List<Answer> answers) {
+        int sum = 0;
+        String response;
+
         answerRepository.saveAll(answers);
+
+        for (Answer answer : answers) {
+            sum += answer.getResponse();
+        }
+
+        if (sum > 0 && sum <= 30) {
+            response = NOT_LIKELY_RESPONSE;
+        } else if (sum > 30 && sum <= 60) {
+            response = LIKELY_RESPONSE;
+        } else {
+            response = VERY_LIKELY_RESPONSE;
+        }
+        return response;
     }
 }

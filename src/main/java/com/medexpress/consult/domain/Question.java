@@ -20,7 +20,7 @@ public class Question extends BaseEntity {
     @NotNull
     private String text;
     @NotNull
-    private String type; // e.g., TEXT, MULTIPLE_CHOICE, RATING
+    private String type; // e.g. RATING
 
     @ManyToOne
     @JoinColumn(name = "consultation_id")

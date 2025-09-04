@@ -12,5 +12,5 @@ import java.util.List;
 public interface ConsultationService {
     public List<Consultation> getAll();
     public Consultation save(Consultation questionnaire);
-    public void saveAnswers(List<Answer> answers);
+    public String saveAnswers(List<Answer> answers);
 }

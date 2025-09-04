@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Answer extends BaseEntity {
     @NotNull
-    private String response;
+    private int response;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
